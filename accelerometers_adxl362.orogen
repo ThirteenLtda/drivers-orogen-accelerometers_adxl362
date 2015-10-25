@@ -12,6 +12,10 @@ task_context "Task" do
     #
     #   new_value = filter_factor * new + (1 - filter_factor) * old
     property 'filter_factor', '/double', 0.8
+    # Whether the component waits for the NIR filter to be initialized before
+    # outputing on sensors_samples and inclination_samples. The time to wait is
+    # automatically computed from the filter_factor value
+    property 'wait_filter_initialization', '/bool', true
 
     # The raw sensor values
     output_port 'raw_sensors_samples', '/base/samples/IMUSensors'

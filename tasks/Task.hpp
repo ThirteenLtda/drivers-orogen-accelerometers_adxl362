@@ -4,6 +4,7 @@
 #define ACCELEROMETERS_ADXL362_TASK_TASK_HPP
 
 #include "accelerometers_adxl362/TaskBase.hpp"
+#include <accelerometers_adxl362/Driver.hpp>
 
 namespace accelerometers_adxl362{
 
@@ -25,8 +26,11 @@ namespace accelerometers_adxl362{
     {
 	friend class TaskBase;
     protected:
+        Driver mDriver;
+        double mFilterFactor;
+        Eigen::Vector3d mFilteredAccelerometers;
 
-
+        int mInitializationCount;
 
     public:
         /** TaskContext constructor for Task

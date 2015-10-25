@@ -1,0 +1,25 @@
+name "accelerometers_adxl362"
+
+using_library 'accelerometers_adxl362'
+import_types_from 'base'
+
+task_context "Task" do
+    needs_configuration
+
+    # The path to the SPI dvice file
+    property 'device', '/std/string'
+    # The filtering factor applied on accelerometers
+    #
+    #   new_value = filter_factor * new + (1 - filter_factor) * old
+    property 'filter_factor', 0.8
+
+    # The raw sensor values
+    output_port 'raw_sensors_samples', '/base/samples/IMUSensors'
+    # The filtered sensor values
+    output_port 'sensors_samples', '/base/samples/IMUSensors'
+    # The computed inclination
+    output_port 'inclination_samples', '/base/samples/RigidBodyState'
+
+    periodic 0.1
+end
+

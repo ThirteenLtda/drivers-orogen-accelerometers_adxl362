@@ -11,7 +11,7 @@ task_context "Task" do
     # The filtering factor applied on accelerometers
     #
     #   new_value = filter_factor * new + (1 - filter_factor) * old
-    property 'filter_factor', 0.8
+    property 'filter_factor', '/double', 0.8
 
     # The raw sensor values
     output_port 'raw_sensors_samples', '/base/samples/IMUSensors'
